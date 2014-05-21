@@ -1,0 +1,58 @@
+=content_for :head do
+  =stylesheet_link_tag "morris", :media => "all"
+  =javascript_include_tag 'raphael.min', 'morris.min', 'charts', 'google'
+
+.row.dashboard
+  .col-sm-3.col-xs-6
+    .block.blue title='Joined Users' data-toggle="tooltip"
+      .head= @total_users
+      .icon
+        .fa.fa-users
+  .col-sm-3.col-xs-6
+    .block.green title='Joined Venues' data-toggle="tooltip"
+      .head= @total_venues
+      .icon
+        .fa.fa-suitcase
+  .col-sm-3.col-xs-6
+    .block.purple title='Checkins' data-toggle="tooltip"
+      .head= @total_checkins
+      .icon
+        .fa.fa-map-marker
+  .col-sm-3.col-xs-6
+    .block.red title='Matches' data-toggle="tooltip"
+      .head= @total_matches
+      .icon
+        .fa.fa-heart
+.row
+  .col-sm-6
+    h2
+      i.fa.fa-users
+      |  Daily Registrations
+    #users-chart style="height: 250px;"
+    javascript:
+      $(function(){
+        geo.charts.line(#{@registrations.to_json.html_safe}, 'users-chart', ['Registrations']);
+      });
+  .col-sm-6
+    h2
+      i.fa.fa-suitcase
+      |  Daily Checkins
+    #checkins-chart style="height: 250px;"
+    javascript:
+      $(function(){
+        geo.charts.line(#{@checkins.to_json.html_safe}, 'checkins-chart', ['Checkins']);
+      });
+
+.row
+  .col-xs-12
+    h2
+      i.fa.fa-map-marker
+      |  Heat Map
+    .row
+      #city-chart.fn-map
+      javascript:
+        $(function(){
+          geo.charts.loadedMap = function(){
+            geo.charts.cities(#{@cities.to_json.html_safe});
+          }
+        });

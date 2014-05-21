@@ -1,0 +1,201 @@
+$blue: #069DCC
+$bluer: #0882A8
+$green: #2FB738
+$purple: #B52B70
+$menu: #eee
+$grey: #444
+$grey-light: #999
+$red: #C52F24
+
+body
+  padding-top: 50px
+  .main
+.mainmenu
+  background: #fff
+  border: none
+  border-bottom: $menu 1px solid
+  .navbar-nav
+    margin: 0
+    li.active
+      a, a:hover
+        background: $menu
+.submenu
+  background: $menu
+  width: 100%
+  border: none
+  margin: 0
+  border-bottom: #888 1px solid
+  border-radius: 0
+  z-index: 1000
+  .navbar-header
+    .navbar-brand
+      color: $green
+  .navbar-nav
+    .active
+      a, a:hover
+        background: none
+        color: $blue
+
+.center
+  text-align: center
+
+.secret
+  display: none
+
+.halfwidth
+  width: 50%
+  margin-right: 5px
+
+.asLabel
+  color: $purple
+.asStatic
+  color: $blue
+  word-wrap: break-word
+
+.margintop
+  margin-top: 5px
+
+.btn-file
+  background: $green
+  color: #fff
+  overflow: hidden
+  position: relative
+  &:hover
+    color: #fff
+  input
+    cursor: pointer
+    direction: ltr 
+    font-size: 23px
+    margin: 0
+    opacity: 0
+    position: absolute
+    right: 0
+    top: 0
+    transform: translate(-200px, 100px) scale(9)
+    -ms-transform: translate(-200px, 100px) scale(9)
+    -webkit-transform: translate(-200px, 100px) scale(9)
+    -o-transform: translate(-200px, 100px) scale(9)
+    -moz-transform: translate(-200px, 100px) scale(9)
+.form-group.actions
+  text-align: right
+.alternatives
+  padding-left: 8px
+  display: inline-block
+  vertical-align: top
+
+.small-thumb
+  width: 60px
+  height: 60px
+.grid
+  .cell
+    text-align: center
+    position: relative
+    width: 220px
+    height: 220px
+    padding: 10px
+    float: left
+    .actions
+      top: 10px
+      right: 10px
+      position: absolute
+    &:hover
+      background: #eee
+      .actions
+        display: block
+.list
+  > .row
+    border-bottom: #aaa 1px dashed
+    padding: 3px 0
+    position: relative
+    border-left: transparent 7px solid
+    &.marked
+      border-left-color: $green
+    &:hover
+      background: #D9EDF7
+    img.auto
+      width: 100%
+    .actions
+      position: absolute
+      bottom: 10px
+      right: 10px
+  .title
+    color: $blue
+    font-size: 16px
+    font-weight: bold
+  .subtitle
+    color: $green
+    font-size: 14px
+    font-weight: bold
+  .description
+    color: $grey
+  .note
+    color: $grey-light
+  .thumb
+    width: 100px
+    margin: 1px
+    position: relative
+    display: inline-block
+    a
+      font-size: 22px
+      padding: 5px
+      position: absolute
+      color: $red
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      text-align: center
+      display: table
+      .fa
+        display: none
+        vertical-align: middle
+      &:hover
+        background: rgba(255,255,255,0.7)
+        text-decoration: none
+        cursor: pointer
+        .fa
+          display: table-cell
+    &.new
+      vertical-align: top
+      overflow: hidden
+      height: 51px
+      a
+        background: $blue
+        height: 51px
+        .fa
+          display: table-cell
+          color: #fff
+        &:hover
+          background: $bluer
+.block
+  background: #eee
+  padding: 10px
+  margin: 5px 0
+  border-radius: 4px
+  position: relative
+  h3
+    margin: 0 0 10px
+  &.blue
+    background: $blue
+  &.green
+    background: $green
+  &.purple
+    background: $purple
+  &.red
+    background: $red
+  .head
+    font-size: 30px
+    font-weight: bold
+    position: absolute
+    color: rgba(0,0,0,0.4)
+  .icon
+    font-size: 50px
+    text-align: right
+    color: rgba(255,255,255,0.3)
+
+.dashboard
+  margin-top: 30px
+  .block
+    padding: 25px 10px 10px 10px
+    .head
+      margin-top: -5px

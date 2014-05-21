@@ -1,0 +1,34 @@
+- if (%w(panel/venues panel/flags panel/users).include? params[:controller]) || ( params[:controller] == 'panel/general' && params[:action] == 'index' )
+  .navbar.navbar-default.submenu.fn-submenu role='navigation'
+    .navbar-header
+      button.navbar-toggle type='button' data-toggle='collapse' data-target='#main-sub-menu'
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      - if 'panel/venues' == params[:controller]
+        .navbar-brand 
+          i.fa.fa-map-marker.fa-lg
+          |  Venues
+      - if 'panel/flags' == params[:controller]
+        .navbar-brand 
+          i.fa.fa-flag.fa-lg
+          |  Flags
+      - if 'panel/users' == params[:controller]
+        .navbar-brand 
+          i.fa.fa-users.fa-lg
+          |  Users
+    #main-sub-menu.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        - if 'panel/venues' == params[:controller]
+          =render partial: '/panel/venues/sub_menu'
+        - if 'panel/flags' == params[:controller]
+          =render partial: '/panel/flags/sub_menu'
+        - if 'panel/users' == params[:controller]
+          =render partial: '/panel/users/sub_menu'
+        - if 'panel/general' == params[:controller]
+          =render partial: '/panel/general/sub_menu'
+      - if 'panel/users' == params[:controller]
+        .navbar-form.navbar-right role="search"
+          .form-group
+            input.form-control placeholder="Search" data-auto-submit=panel_users_url

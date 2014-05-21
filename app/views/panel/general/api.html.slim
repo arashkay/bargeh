@@ -1,0 +1,73 @@
+=content_for :head do
+  =javascript_include_tag 'api'
+#fb-root
+.row
+  .col-xs-12
+    h2 API v1
+    .block
+      h3
+        i.fa.fa-terminal
+        | Terminal
+      .form
+        .fn-comment.fn-comment-authenticate.alert.alert-info.secret
+          ul 
+            li You can ask for extended version of authentication result by setting extend param. (e.g. extend=counts)
+        .fn-comment.fn-comment-user.alert.alert-info.secret
+          ul 
+            li Gender is: 0 form male, 1 for female
+            li Device id: is a random unique id on device, some OS they dont have it
+            li Device type: can only be ios, android, windows, blackberry
+            li Notification id: is device push notification id
+            li Can Notify: 1 for activating notification, 0 for deactivating it
+        .fn-comment.fn-comment-me.alert.alert-info.secret
+          ul 
+            li You can ask for extended version of me by setting extend param. (e.g. extend=device,prefix)
+            li To get user's device extend=device
+            li To get user's username prefix extend=prefix
+        .form-group
+          select.halfwidth.fn-action
+            option value='' Please Choose an API Call
+            -@routes.each do |route|
+              option value=route =route
+          a.btn.btn-primary.fn-call
+            i.fa.fa-cloud-upload
+            |  Call
+          input.fn-auth-token type='hidden'
+        .params.fn-params
+      .json-block.fn-response
+        .json-view-head 
+          i.fa.fa-flask
+          |  JSON Browser 
+          span.fn-speed 0
+          |  ms
+        .json-view No data
+        .json-view-footer
+          input#expand-result type='checkbox' 
+          label for='expand-result' Expand result
+    .block
+      h3
+        i.fa.fa-certificate
+        | Mock Notification
+      .form.fn-notification
+        .alert.alert-info
+          ul 
+            li Type: message, connected, connecting
+          hr
+          h4 Notification format for ios
+          ul
+            li 
+              |  { alert: message, other: { screen: 'messages', with_user_id: user_id }, badges: unviewed_messages_count, sound: 'default' }
+            li 
+              |  { alert: message, other: { screen: 'connected', with_user_id: to_user_id }, badges: unviewed_connected_count, sound: 'default' }
+            li 
+              |  { alert: message, other: { screen: 'connecting', with_user_id: user_id }, badges: unviewed_connecting_count, sound: 'default' }
+        .params
+          .param
+            i.fa.fa-plus
+            input name='type' type='text' placeholder='Type'
+          .param
+            i.fa.fa-plus
+            input name='user_id' type='text' placeholder='User id'
+          a.btn.btn-primary data-remote=mock_notifications_path(format: :json) data-parent='.fn-notification'
+            i.fa.fa-certificate
+            |  Mock Notification

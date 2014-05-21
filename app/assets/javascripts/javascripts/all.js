@@ -1,0 +1,7 @@
+//= require 'jquery.min'
+//= require 'bootstrap.min'
+//= require 'jquery.jsonview'
+//= require 'select2.min'
+//= require 'wrapper'
+//= require 'core'
+//= require 'main'

@@ -1,0 +1,15 @@
+-unless current_admin.nil?
+  -if current_admin.has_role? [:hobbit, :wizard]
+    li class=( %w(api charts).include?(params[:action]) ? '' : :active )
+      a href=root_path 
+        i.fa.fa-dashboard.fa-lg
+        |  Dashboard
+  -if current_admin.is_wizard?
+    li class=(params[:action]=='api'? :active : '' )
+      a href=panel_api_path
+        i.fa.fa-terminal.fa-lg
+        |  API
+    li class=(params[:action]=='charts'? :active : '' )
+      a href=panel_charts_path
+        i.fa.fa-bar-chart-o.fa-lg
+        |  Charts

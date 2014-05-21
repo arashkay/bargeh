@@ -1,0 +1,15 @@
+.row
+  .col-xs-12
+    h2 Flags
+    .grid
+      -@flags.each do |flag|
+        .cell
+          .content
+            = render partial: flag.flaggable_type.underscore, locals: { obj: flag.flaggable }
+          .actions
+            .btn-group
+              a.btn.btn-danger data-remote=clean_panel_flag_path(flag) data-success='geo.reload'
+                i.fa.fa-ban.fa-lg
+              a.btn.btn-success data-remote=panel_flag_path(flag) data-success='geo.reload' data-method='DELETE'
+                i.fa.fa-check.fa-lg
+    .clearfix

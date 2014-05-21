@@ -1,0 +1,30 @@
+.row
+  .col-sm-6
+    h2 Latest Users
+  .col-sm-6
+    .pull-right
+      = paginate @users
+.list
+  - @users.each do |user|
+    .row
+      .col-sm-2
+        img src=user.image(:thumb)
+      .col-sm-10
+        .row
+          .col-sm-3
+            h5= user.full_name
+          .col-sm-5
+            h5 
+              i.fa.fa-map-marker
+              |  #{user.city}, #{user.country}
+          .col-sm-4
+            h5 
+              i.fa.fa-eye
+              |  #{distance_of_time_in_words_to_now user.updated_at} ago
+        - user.photos.each do |photo|
+          img.small-thumb src= photo.image(:thumb)
+      .actions
+        .btn-group
+          a.btn.btn-primary href=panel_api_path(id: user.id) Act as
+.center.pull-right
+  = paginate @users

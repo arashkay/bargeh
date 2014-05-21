@@ -1,0 +1,105 @@
+.collapsable
+  .title
+    cursor: pointer
+  .summary
+    display: block
+  .content
+    display: none
+  &.open
+    .summary
+      display: none
+    .content
+      display: block
+
+.photo
+  width: 50px
+  height: 50px
+  display: inline
+  margin-right: 5px
+
+.json-block
+  margin-bottom: 2px
+.json-view-head
+  background: #444
+  color: #3AAAF8
+  padding: 5px 10px
+  font-weight: bold
+  cursor: pointer
+.json-view-footer
+  background: #333
+  font-size: 12px
+  padding: 2px 10px 3px
+  color: #3AAAF8
+  text-align: right
+.json-view
+  display: none
+  border: #555 1px dashed
+  border-top: none
+  padding: 5px 5px 10px
+  .string
+    word-wrap: break-word
+#expand-result
+  margin-right: 5px
+.params
+  padding-bottom: 10px
+.param
+  color: #444
+  margin: 5px 10px
+  display: inline-block
+  width: 350px
+  i
+    color: $blue
+    margin-right: 5px
+  input
+    color: $blue
+    margin-left: 5px
+    width: 200px
+    background: none
+    border: none
+    border-bottom: $blue 1px dashed
+    &:-moz-placeholder, &::-moz-placeholder
+      color: $blue
+
+.map
+  height: 400px
+
+@keyframes shake
+  0% 
+    transform: translate(0, 3px)
+  50%
+    transform: translate(0, -3px)
+  100%
+    transform: translate(0, 0)
+ 
+@-moz-keyframes shake
+  0%
+    -moz-transform: translate(0, 3px)
+  50%
+    -moz-transform: translate(0, -3px)
+  100%
+    -moz-transform: translate(0, 0)
+
+@-webkit-keyframes shake
+  0% 
+    -webkit-transform: translate(0, 3px)
+  50% 
+    -webkit-transform: translate(0, -3px)
+  100% 
+    -webkit-transform: translate(0, 0)
+
+.shake
+  i
+    animation-name: shake
+    animation-duration: 150ms
+    animation-iteration-count: 3
+    animation-timing-function: linear
+
+    -moz-animation-name: shake
+    -moz-animation-duration: 150ms
+    -moz-animation-iteration-count: 3
+    -moz-animation-timing-function: linear
+
+    -webkit-animation-name: shake
+    -webkit-animation-duration: 150ms
+    -webkit-animation-iteration-count: 3
+    -webkit-animation-timing-function: linear

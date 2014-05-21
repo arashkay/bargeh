@@ -1,0 +1,6 @@
+|
+ {
+  "status": #{response.status},
+  "error": #{@error.to_json.html_safe},
+  "data": #{yield}
+ }

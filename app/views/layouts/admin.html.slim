@@ -1,0 +1,28 @@
+doctype 5
+html
+  head
+    title GEO Discovery
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    =stylesheet_link_tag "all", :media => "all"
+    =javascript_include_tag "all"
+    =yield :head
+    =csrf_meta_tags
+  body
+    .navbar.navbar-default.navbar-fixed-top.mainmenu role='navigation'
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle type='button' data-toggle='collapse' data-target='#main-menu'
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #main-menu.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            =render '/layouts/menu'
+          ul.nav.navbar-nav.navbar-right
+            li
+              a data-remote=destroy_admin_session_path data-method='DELETE' data-success='geo.reload'
+                i.fa.fa-power-off.fa-lg
+    =render '/layouts/sub_menu'
+    .main.container-fluid
+      =yield
