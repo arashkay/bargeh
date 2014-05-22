@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   reverse_geocoded_by :latitude, :longitude
 
   def has_existed?

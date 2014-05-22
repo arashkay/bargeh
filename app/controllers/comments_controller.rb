@@ -6,7 +6,7 @@ class CommentsController < ApiController
   end
 
   def destroy
-    @current_user.comments.where(id: params[:id]).destroy
+    @current_user.comments.where(id: params[:id]).first.destroy
     render '/layouts/true'
   end
 

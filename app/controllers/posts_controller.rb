@@ -25,6 +25,11 @@ class PostsController < ApiController
     render :post
   end
 
+  def destroy
+    @current_user.posts.where( id: params[:id] ).first.destroy
+    render 'layouts/true'
+  end
+
 private
 
   def post_params
