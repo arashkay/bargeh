@@ -4,7 +4,7 @@ class PostsController < ApiController
     latitude  = params.fetch(:scope, {})[:latitude].blank?  ? nil : params[:scope][:latitude]
     longitude = params.fetch(:scope, {})[:longitude].blank? ? nil : params[:scope][:longitude]
     return render Error.missed_param(:scope) if latitude.blank? || longitude.blank?
-    @posts = Post.around_me latitude, longitude
+    @posts = Post.includes(:user).around_me latitude, longitude
     render :posts
   end
 
