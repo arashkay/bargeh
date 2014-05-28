@@ -6,20 +6,23 @@ class User < ActiveRecord::Base
   has_many :posts
 
   validates :number, uniqueness: true, allow_nil: true
-  validates :username, uniqueness: true, length: { maximum: 12 }, format: { with: /\A[\w]*\z/, message: 'should be only letters and numbers' }, allow_nil: true, allow_blank: false
+  validates :username, uniqueness: true, length: { maximum: 10 }, format: { with: /\A\p{Word}*\z/, message: 'should be only letters and numbers' }, allow_nil: true, allow_blank: false
   
   has_many :devices
+
+  before_create :set_defaults
 
   def initial
     "#{first_name} #{last_name.first}."
   end
 
   def username_prefix
-    "ALPHA_"
+    APP::USERNAME::PREIX
   end
 
   def username_postfix=(postfix)
-    self.username = "#{self.username_prefix}#{postfix}".upcase
+    postfix = postfix.gsub(/\p{Common}/, '').gsub(/[\w]/, '').persian_cleanup
+    self.username = "#{self.username_prefix}#{postfix}"
   end
    
   def self.me_by_number( number )
@@ -36,6 +39,18 @@ class User < ActiveRecord::Base
       break token unless User.exists?(authentication_token: token)
     end
     save
+  end
+
+private
+
+  def set_defaults
+    self.avatar_name = 'avatar1' if self.avatar_name.blank?
+    if self.username.blank?
+      loop do 
+        self.username_postfix = APP::USERNAME::GENERATOR.sample(5).join.persian_cleanup
+        break true unless User.exists?(username: self.username)
+      end
+    end
   end
 
 end

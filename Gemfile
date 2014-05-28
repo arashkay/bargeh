@@ -26,6 +26,7 @@ gem 'god'
 gem 'devise'
 gem 'cancancan', '~> 1.7'
 gem "non-stupid-digest-assets"
+gem 'virastar'
 
 gem 'spring', group: :development
 

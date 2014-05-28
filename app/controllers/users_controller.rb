@@ -56,7 +56,7 @@ class UsersController < ApiController
 private
 
   def user_params
-    params[:user].blank? ? {} : params.require(:user).permit( :first_name, :last_name, :email, :number, :username_postfix )
+    params[:user].blank? ? {} : params.require(:user).permit( :first_name, :last_name, :email, :number, :username_postfix, :avatar_name )
   end
 
   def device_params

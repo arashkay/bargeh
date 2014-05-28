@@ -1,5 +1,5 @@
 object @current_user
-attributes :first_name, :last_name, :number, :email, :username, :premium
+attributes :first_name, :last_name, :number, :email, :username, :premium, :avatar_name
 unless params[:extend].nil?
   if params[:extend].include? 'device'
     child :devices do

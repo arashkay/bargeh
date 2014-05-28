@@ -45,6 +45,11 @@ module APP
     CREATURE = 'creature'
   end
 
+  module USERNAME
+    PREIX = APP::CONFIGS['username']['prefix']
+    GENERATOR = APP::CONFIGS['username']['generator']
+  end
+
 end
  
 # IMAGE
