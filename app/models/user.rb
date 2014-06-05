@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
 private
 
   def set_defaults
-    self.avatar_name = 'avatar1' if self.avatar_name.blank?
+    self.avatar_name = "avatar#{1+rand(10)}" if self.avatar_name.blank?
     if self.username.blank?
       loop do 
         self.username_postfix = APP::USERNAME::GENERATOR.sample(5).join.persian_cleanup

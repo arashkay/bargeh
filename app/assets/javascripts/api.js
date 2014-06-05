@@ -76,7 +76,7 @@ var api = [
     params: { location: ['latitude', 'longitude'] }
   },
   { 
-    path: "POST /api/v1/photos/:id/flagged.json",
+    path: "POST /api/v1/posts/:id/flagged.json",
     params: { flag: ['body'] }
   },
   { 

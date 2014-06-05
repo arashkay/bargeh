@@ -41,7 +41,11 @@ Rails.application.routes.draw do
         resources :posts, only:[:create, :update, :destroy]
         resources :comments, only:[:create, :destroy]
       end
-      resources :posts, only:[:index, :show]
+      resources :posts, only:[:index, :show] do
+        member do
+          post :flagged
+        end
+      end
       resources :users, only:[:show] do
         member do
           post :flagged

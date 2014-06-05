@@ -25,6 +25,11 @@ class PostsController < ApiController
     render :post
   end
 
+  def flagged
+    Flag.report Post.find(params[:id]), params.fetch(:flag, {})[:body]
+    render '/layouts/true'
+  end
+
   def destroy
     @current_user.posts.where( id: params[:id] ).first.destroy
     render 'layouts/true'

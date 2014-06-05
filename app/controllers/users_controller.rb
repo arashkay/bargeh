@@ -20,10 +20,6 @@ class UsersController < ApiController
     @user = User.find params[:id]
   end
 
-  def join
-    @current_user.join_group group[]
-  end
-
   def create
     return render Error.missed_param(:device) if params.fetch(:device, {})[:device_id].blank?
     @user = User.me_by_device params[:device][:device_id]
@@ -43,6 +39,11 @@ class UsersController < ApiController
     else
       render Error.failed @current_user.errors
     end
+  end
+
+  def flagged
+    Flag.report User.find(params[:id]), params.fetch(:flag, {})[:body]
+    render '/layouts/true'
   end
 
   def location
