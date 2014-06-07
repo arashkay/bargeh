@@ -15,7 +15,11 @@ class PostsController < ApiController
 
   def create
     @post = @current_user.posts.find_or_create post_params
-    render :post
+    if @post.errors.any?
+      render Error.failed @post.errors
+    else
+      render :post
+    end
   end
 
   def update

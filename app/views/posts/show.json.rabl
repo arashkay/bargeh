@@ -3,6 +3,6 @@ extends '/posts/post'
 child :comments do
   extends '/comments/comment'
   glue :user do 
-    attributes :username
+    attributes :username, :avatar_name
   end
 end

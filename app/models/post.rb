@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   reverse_geocoded_by :latitude, :longitude
 
+  validates :body, :latitude, :longitude, presence: true
+
   def has_existed?
     @has_existed || false
   end

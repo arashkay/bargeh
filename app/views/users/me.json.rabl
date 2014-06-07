@@ -9,5 +9,10 @@ unless params[:extend].nil?
   if params[:extend].include? 'prefix'
     attributes :username_prefix
   end
+  if params[:extend].include? 'posts'
+    child :posts do
+      attributes :id, :body, :comments_count
+    end
+  end
 end
 
