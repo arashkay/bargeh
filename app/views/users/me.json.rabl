@@ -16,5 +16,5 @@ unless params[:extend].nil?
   end
 end
 if @is_signup
-  attributes :authentication_token
+  attributes :id, :authentication_token
 end
