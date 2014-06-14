@@ -1,14 +1,18 @@
+require "#{Rails.root}/lib/circular.rb"
+
 class User < ActiveRecord::Base
 
   attr_accessor :username_prefix, :username_postfix
   has_many :messages
   has_many :comments
   has_many :posts
+  has_many :devices
 
+  has_attached_file :avatar, :styles => { :medium => "200x200#", :thumb => "100x100#" }, processors: [:thumbnail, :circular]
+  
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates :number, uniqueness: true, allow_nil: true
   validates :username, uniqueness: true, length: { maximum: 10 }, format: { with: /\A\p{Word}*\z/, message: 'should be only letters and numbers' }, allow_nil: true, allow_blank: false
-  
-  has_many :devices
 
   before_create :set_defaults
 

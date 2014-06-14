@@ -1,4 +1,4 @@
-var user_params = { user: ['first_name', 'last_name', 'email', 'number', 'username_postfix', 'premium', 'avatar_name'], device: [ 'device_id', 'device_type', 'notification_id', 'can_notify' ] };
+var user_params = { user: ['first_name', 'last_name', 'email', 'number', 'username_postfix', 'premium', 'avatar_name', 'avatar'], device: [ 'device_id', 'device_type', 'notification_id', 'can_notify' ] };
 var api = [
   { 
     path: "POST /api/v1/authenticate.json",

@@ -25,7 +25,8 @@ class UsersController < ApiController
     @user = User.me_by_device params[:device][:device_id]
     return render Error.duplicate unless @user.blank?
     @current_user = User.new user_params
-    if @current_user.save
+    if @current_user.new_session!
+      @is_signup = true
       render save_device_or_finish
     else
       render Error.failed @current_user.errors
@@ -57,7 +58,7 @@ class UsersController < ApiController
 private
 
   def user_params
-    params[:user].blank? ? {} : params.require(:user).permit( :first_name, :last_name, :email, :number, :username_postfix, :avatar_name )
+    params[:user].blank? ? {} : params.require(:user).permit( :first_name, :last_name, :email, :number, :username_postfix, :avatar_name, :avatar )
   end
 
   def device_params
